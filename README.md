@@ -1,0 +1,1 @@
+This project is to work on the workflow of a Docker Project project in real life using React
