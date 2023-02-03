@@ -1,11 +1,40 @@
-version:2
+version:2.1
+
+jobs:
+  build:
+    working_directory: /frontend
+    docker:
+      before_install:
+        - docker build -t placidef/docker-reactjs -f Dockerfile.dev .
+      script:
+        - docker run placidef/docker-reactjs npm run test -- --coverage
+
+
+workflows:
+    build_and_test:
+      jobs:
+        -build
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 jobs:
   build:
     services:
       - docker
 
-    before_install:
-      - docker build -t placidef/docker-reactjs -f Dockerfile.dev .
+    
 
-    script:
-      - docker run placidef/docker-reactjs npm run test -- --coverage
+   
