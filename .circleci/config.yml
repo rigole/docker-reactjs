@@ -2,7 +2,7 @@ version: 2.1
 
 jobs:
   build:
-    working_directory: /frontend
+    working_directory: ./frontend
     docker:
       - image: docker:17.05.0-ce-git
     steps:
