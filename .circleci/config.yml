@@ -2,11 +2,20 @@ version: 2.1
 
 jobs:
   build:
+    working_directory: /app
     docker:
-      before_install:
-        - docker build -t placidef/docker-reactjs -f Dockerfile.dev .
-      script:
-        - docker run placidef/docker-reactjs npm run test -- --coverage
+      - image: - docker:17.05.0-ce-git
+    steps:
+      - checkout 
+      - setup_remote_docker
+      - run:
+          name: Install dependencies Docker
+          command: |
+             docker build -t placidef/docker-reactjs -f Dockerfile.dev .
+      - run:
+          name: run docker
+          command: |
+            docker run placidef/docker-reactjs npm run test -- --coverage
 
 
 workflows:
