@@ -1,9 +1,11 @@
-sudo: required
-services:
-  - docker
+version:2
+jobs:
+  build:
+    services:
+      - docker
 
-before_install:
-  - docker build -t placidef/docker-reactjs -f Dockerfile.dev .
+    before_install:
+      - docker build -t placidef/docker-reactjs -f Dockerfile.dev .
 
-script:
-  - docker run placidef/docker-reactjs npm run test -- --coverage
+    script:
+      - docker run placidef/docker-reactjs npm run test -- --coverage
